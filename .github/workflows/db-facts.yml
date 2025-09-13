@@ -1,0 +1,37 @@
+name: DB Facts
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "supabase/migrations/**"
+  pull_request:
+    paths:
+      - "supabase/migrations/**"
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 2"   # Tuesdays at 06:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  build-db-facts:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci || npm i
+      - name: Generate DB facts
+        run: npm run db:facts
+      - name: Commit DB facts
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs/db-facts.json docs/db-facts.md || true
+          git commit -m "chore(db): refresh db facts [skip ci]" || echo "no changes"
+          git push || true

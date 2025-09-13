@@ -1,0 +1,33 @@
+name: Context Pack
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays at 06:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  build-pack:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci || npm i
+      - name: Generate context pack
+        run: npm run context:pack
+      - name: Commit context artifacts
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs/context/context-pack.json docs/context/summary.md || true
+          git commit -m "chore(context): refresh context pack [skip ci]" || echo "no changes"
+          git push || true
