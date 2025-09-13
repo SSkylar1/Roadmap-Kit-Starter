@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-09-13T20:21:42.646Z",
+  "generated_at": "2025-09-13T20:46:28.917Z",
   "env": "dev",
   "weeks": [
     {
@@ -9,7 +9,7 @@
         {
           "id": "infra-ci",
           "name": "CI & status scaffolding",
-          "done": false,
+          "done": true,
           "checks": [
             {
               "type": "files_exist",
@@ -18,8 +18,8 @@
             },
             {
               "type": "http_ok",
-              "ok": false,
-              "detail": "HTTP 404"
+              "ok": true,
+              "detail": ""
             }
           ]
         }
