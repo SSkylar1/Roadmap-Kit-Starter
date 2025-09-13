@@ -1,0 +1,71 @@
+{
+  "generated_at": "2025-09-13T16:23:44.298Z",
+  "env": "dev",
+  "weeks": [
+    {
+      "title": "Weeks 1–2 — Foundations",
+      "id": "w01",
+      "items": [
+        {
+          "id": "infra-ci",
+          "name": "CI & status scaffolding",
+          "done": false,
+          "checks": [
+            {
+              "type": "files_exist",
+              "ok": true,
+              "detail": ".github/workflows/roadmap.yml, docs/infra-facts.md"
+            },
+            {
+              "type": "http_ok",
+              "ok": false,
+              "detail": "HTTP 404"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Weeks 3–4 — Auth & DB",
+      "id": "w02",
+      "items": [
+        {
+          "id": "db-ext",
+          "name": "Required extension enabled",
+          "done": false,
+          "checks": [
+            {
+              "type": "sql_exists",
+              "ok": false,
+              "detail": "{\"code\":401,\"message\":\"Missing authorization header\"}"
+            }
+          ]
+        },
+        {
+          "id": "users-rls",
+          "name": "RLS enabled on users",
+          "done": false,
+          "checks": [
+            {
+              "type": "sql_exists",
+              "ok": false,
+              "detail": "{\"code\":401,\"message\":\"Missing authorization header\"}"
+            }
+          ]
+        },
+        {
+          "id": "users-table",
+          "name": "users table exists",
+          "done": false,
+          "checks": [
+            {
+              "type": "sql_exists",
+              "ok": false,
+              "detail": "{\"code\":401,\"message\":\"Missing authorization header\"}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

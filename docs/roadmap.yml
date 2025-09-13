@@ -1,0 +1,31 @@
+version: 1
+weeks:
+  - id: w01
+    title: Weeks 1–2 — Foundations
+    items:
+      - id: infra-ci
+        name: CI & status scaffolding
+        checks:
+          - type: files_exist
+            globs: [".github/workflows/roadmap.yml", "docs/infra-facts.md"]
+          - type: http_ok
+            url: "https://example.com/health"
+            must_match: ["ok"]
+  - id: w02
+    title: Weeks 3–4 — Auth & DB
+    items:
+      - id: db-ext
+        name: Required extension enabled
+        checks:
+          - type: sql_exists
+            query: "ext:pgcrypto"
+      - id: users-rls
+        name: RLS enabled on users
+        checks:
+          - type: sql_exists
+            query: "rls:public:users"
+      - id: users-table
+        name: users table exists
+        checks:
+          - type: sql_exists
+            query: "table:public:users"

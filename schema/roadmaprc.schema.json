@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roadmap Kit Runtime Config",
+  "type": "object",
+  "properties": {
+    "kitVersion": { "type": ["string", "null"] },
+    "envs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "READ_ONLY_CHECKS_URL": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "verify": {
+      "type": "object",
+      "properties": {
+        "symbols": { "type": "array", "items": { "type": "string" } },
+        "defaultEnv": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "comment": {
+      "type": "object",
+      "properties": {
+        "liveProbe": { "type": "boolean" },
+        "probeTestPass": { "type": "boolean" },
+        "probeSupaFn": { "type": "boolean" },
+        "privacyDisclaimer": { "type": "string" },
+        "legendEnabled": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

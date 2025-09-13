@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roadmap",
+  "type": "object",
+  "required": ["version", "weeks"],
+  "properties": {
+    "version": { "type": ["string", "number"] },
+    "weeks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "items"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name"],
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "oneOf": [
+                      { "properties": { "type": { "const": "files_exist" }, "globs": { "type": "array", "items": { "type": "string" } } }, "required": ["type","globs"], "additionalProperties": false },
+                      { "properties": { "type": { "const": "code_search" }, "patterns": { "type": "array", "items": { "type": "string" } } }, "required": ["type","patterns"], "additionalProperties": false },
+                      { "properties": { "type": { "const": "test_pass" }, "command": { "type": "string" }, "must_match": { "type": "array", "items": { "type": "string" } } }, "required": ["type","command"], "additionalProperties": false },
+                      { "properties": { "type": { "const": "sql_exists" }, "query": { "type": "string" } }, "required": ["type","query"], "additionalProperties": false },
+                      { "properties": { "type": { "const": "http_ok" }, "url": { "type": "string" }, "must_match": { "type": "array", "items": { "type": "string" } } }, "required": ["type","url"], "additionalProperties": false },
+                      { "properties": { "type": { "const": "supa_fn_exists" }, "name": { "type": "string" } }, "required": ["type","name"], "additionalProperties": false }
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

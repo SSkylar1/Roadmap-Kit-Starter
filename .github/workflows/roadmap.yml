@@ -1,0 +1,35 @@
+name: Roadmap Sync
+on:
+  push: { branches: [main] }
+  pull_request: {}
+  workflow_dispatch: {}
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    env:
+      ROADMAP_ENV: dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: npm ci || true
+
+      - name: Validate & scan
+        run: |
+          node scripts/validate-roadmap.mjs
+          node scripts/stack-scan.mjs
+          node scripts/validate-techstack.mjs
+
+      - name: Run checks & discover
+        run: |
+          node scripts/roadmap-check.mjs
+          node scripts/discover-work.mjs
+
+      - name: Commit status artifacts
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs/roadmap-status.* docs/backlog-discovered.yml docs/tech-stack.yml
+          git commit -m "chore(roadmap): auto-update status" || echo "no changes"
+          git push || true

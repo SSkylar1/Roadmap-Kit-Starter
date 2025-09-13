@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tech Stack",
+  "type": "object",
+  "required": ["app", "ci_cd", "generated_at"],
+  "properties": {
+    "app": {
+      "type": "object",
+      "required": ["framework"],
+      "properties": {
+        "framework": { "type": "string" },
+        "deps": { "type": "array", "items": { "type": "string" } },
+        "devDeps": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "ci_cd": {
+      "type": "object",
+      "required": ["workflows"],
+      "properties": {
+        "workflows": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "generated_at": { "type": "string" }
+  },
+  "additionalProperties": false
+}

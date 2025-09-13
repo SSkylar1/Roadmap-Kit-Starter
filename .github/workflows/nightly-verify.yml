@@ -1,0 +1,18 @@
+name: Nightly Verify
+on:
+  schedule: [{ cron: "17 4 * * *" }]
+  workflow_dispatch: {}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      ROADMAP_ENV: dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: npm ci || true
+      - name: Doctor
+        run: node bin/doctor.mjs || true
+      - name: Verify infra health
+        run: node bin/verify.mjs

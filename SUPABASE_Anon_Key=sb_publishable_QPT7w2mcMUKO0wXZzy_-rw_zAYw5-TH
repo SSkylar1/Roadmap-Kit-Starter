@@ -1,0 +1,5 @@
+supabase functions deploy read_only_checks
+
+supabase secrets set SUPABASE_URL="https://kszqcbpkxvhtpfmglrhu.supabase.co" \
+  SUPABASE_ANON_KEY="sb-publishable_QPT7w2mcMUKO0wXZzy_-rw_zAYw5-TH"
+

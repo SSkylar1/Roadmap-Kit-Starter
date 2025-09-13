@@ -1,0 +1,16 @@
+# secrets
+.env
+.env.*
+*.key
+*.pem
+
+# builds
+dist/
+build/
+.out/
+.next/
+coverage/
+
+# noise
+node_modules/
+.worktrees/

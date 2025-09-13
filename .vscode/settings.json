@@ -1,0 +1,21 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "docs/roadmap-status.json": true
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["roadmaprc.json", ".roadmaprc", ".roadmaprc.json"],
+      "url": "./schema/roadmaprc.schema.json"
+    }
+  ],
+  "deno.enable": true,
+  "deno.enablePaths": ["supabase/functions"],
+  "deno.lint": true
+}
+
+

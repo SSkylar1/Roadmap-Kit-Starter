@@ -1,0 +1,111 @@
+import fs from "node:fs";
+import yaml from "yaml";
+import fg from "fast-glob";
+import { execSync, spawnSync } from "node:child_process";
+
+const rc = fs.existsSync(".roadmaprc.json") ? JSON.parse(fs.readFileSync(".roadmaprc.json","utf8")) : {};
+const ENV = process.env.ROADMAP_ENV || rc.verify?.defaultEnv || "dev";
+const READ_ONLY_URL = process.env.READ_ONLY_CHECKS_URL || rc.envs?.[ENV]?.READ_ONLY_CHECKS_URL || "";
+
+const readRoadmap = () => yaml.parse(fs.readFileSync("docs/roadmap.yml","utf8"));
+
+const grep = (patterns, files) => {
+  const out = [];
+  const res = new RegExp(patterns.join("|"));
+  for (const f of files) {
+    try {
+      const t = fs.readFileSync(f, "utf8");
+      if (res.test(t)) out.push(f);
+    } catch {}
+  }
+  return out;
+};
+
+const httpOk = async (url, must=[]) => {
+  const r = await fetch(url);
+  const text = await r.text();
+  const ok = r.ok && (must.length ? must.every(m => new RegExp(m).test(text)) : true);
+  return { ok, detail: ok ? "" : `HTTP ${r.status}` };
+};
+
+const sqlExists = async (symbol) => {
+  if (!READ_ONLY_URL) return { ok:false, detail:"READ_ONLY_CHECKS_URL not set" };
+  const r = await fetch(READ_ONLY_URL, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ query: symbol })
+  });
+  const text = await r.text();
+  let ok = false;
+  try { ok = !!(JSON.parse(text)?.ok); } catch {}
+  return { ok, detail: ok ? "" : text.slice(0,120) };
+};
+
+const supaFnExists = (name) => {
+  try {
+    const out = execSync("supabase functions list", { encoding:"utf8" });
+    const ok = out.split("\n").some(l => l.includes(name));
+    return { ok, detail: ok ? "" : "not listed" };
+  } catch (e) {
+    return { ok:false, detail:"supabase CLI not available" };
+  }
+};
+
+const testPass = (command, must=[]) => {
+  const res = spawnSync(command, { shell:true, encoding:"utf8" });
+  if (res.status !== 0) return { ok:false, detail:`exit ${res.status}` };
+  const ok = must.length ? must.every(m => new RegExp(m).test(res.stdout)) : true;
+  return { ok, detail: ok ? "" : "must_match failed" };
+};
+
+const main = async () => {
+  const plan = readRoadmap();
+  const status = { generated_at: new Date().toISOString(), env: ENV, weeks: [] };
+
+  for (const wk of plan.weeks || []) {
+    const wkOut = { title: wk.title, id: wk.id, items: [] };
+    for (const it of wk.items || []) {
+      const checks = it.checks || [];
+      const results = [];
+      for (const c of checks) {
+        if (c.type === "files_exist") {
+          const files = await fg(c.globs, { dot:true, ignore:["**/node_modules/**",".git/**"] });
+          results.push({ type:c.type, ok: files.length > 0, detail: files.slice(0,5).join(", ") });
+        }
+        if (c.type === "code_search") {
+          const files = await fg(["**/*.*","!**/node_modules/**","!**/.git/**"], { dot:false });
+          const hits = grep(c.patterns, files);
+          results.push({ type:c.type, ok: hits.length > 0, detail: hits.slice(0,5).join(", ") });
+        }
+        if (c.type === "test_pass") {
+          results.push({ type:c.type, ...testPass(c.command, c.must_match || []) });
+        }
+        if (c.type === "http_ok") {
+          results.push({ type:c.type, ...(await httpOk(c.url, c.must_match || [])) });
+        }
+        if (c.type === "sql_exists") {
+          results.push({ type:c.type, ...(await sqlExists(c.query)) });
+        }
+        if (c.type === "supa_fn_exists") {
+          results.push({ type:c.type, ...(supaFnExists(c.name)) });
+        }
+      }
+      const done = results.every(r => r.ok);
+      wkOut.items.push({ id: it.id, name: it.name, done, checks: results });
+    }
+    status.weeks.push(wkOut);
+  }
+
+  fs.writeFileSync("docs/roadmap-status.json", JSON.stringify(status, null, 2), "utf8");
+
+  const lines = ["# Roadmap Status", "", `Generated: ${status.generated_at} (env: ${ENV})`, ""];
+  for (const w of status.weeks) {
+    lines.push(`## ${w.title}`);
+    for (const it of w.items) lines.push(`- ${it.done ? "✅" : "❌"} **${it.name}** (\`${it.id}\`)`);
+    lines.push("");
+  }
+  fs.writeFileSync("docs/roadmap-status.md", lines.join("\n"), "utf8");
+  console.log("Updated docs/roadmap-status.json & .md");
+};
+
+main().catch(e => { console.error(e); process.exit(1); });

@@ -1,0 +1,27 @@
+{
+  "name": "roadmap-kit",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "roadmap-kit": "./bin/cli.mjs"
+  },
+  "scripts": {
+    "init": "node ./bin/init.mjs --yes",
+    "verify": "node ./bin/verify.mjs",
+    "doctor": "node ./bin/doctor.mjs",
+    "schema:roadmap": "node ./scripts/validate-roadmap.mjs",
+    "schema:tech": "node ./scripts/validate-techstack.mjs",
+    "stack:scan": "node ./scripts/stack-scan.mjs",
+    "roadmap:check": "node ./scripts/roadmap-check.mjs",
+    "roadmap:discover": "node ./scripts/discover-work.mjs",
+    "pr:comment": "node ./scripts/compare-roadmap.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "chalk": "^5.3.0",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "yaml": "^2.5.0"
+  }
+}
