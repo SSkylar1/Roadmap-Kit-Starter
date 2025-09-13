@@ -1,7 +1,6 @@
 # Roadmap Status
 
-Generated: 2025-09-13T21:21:07.210Z (env: dev)
-Generated: 2025-09-13T20:46:28.917Z (env: dev)
+Generated: 2025-09-13T21:34:01.394Z (env: dev)
 
 ## Weeks 1–2 — Foundations
 - ✅ **CI & status scaffolding** (`infra-ci`)
@@ -50,9 +49,3 @@ Generated: 2025-09-13T20:46:28.917Z (env: dev)
 ## Weeks 23–24 — Packaging & docs
 - ❌ **New-repo bootstrap template published** (`repo-template`)
 - ❌ **One-pager: how to adopt in <30 min** (`one-pager`)
-- ✅ **CI & status scaffolding** (`infra-ci`)
-
-## Weeks 3–4 — Auth & DB
-- ✅ **Required extension enabled** (`db-ext`)
-- ✅ **RLS enabled on users** (`users-rls`)
-- ✅ **users table exists** (`users-table`)

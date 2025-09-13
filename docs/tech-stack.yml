@@ -2,15 +2,18 @@ app:
   framework: node
   deps:
     - chalk
-    - fast-glob
     - fs-extra
     - yaml
   devDeps:
     - ajv
     - ajv-formats
+    - fast-glob
+    - js-yaml
 ci_cd:
   workflows:
+    - context-pack.yml
+    - db-facts.yml
     - nightly-verify.yml
     - roadmap-pr-comment.yml
     - roadmap.yml
-generated_at: 2025-09-13T20:46:28.659Z
+generated_at: 2025-09-13T21:34:01.136Z

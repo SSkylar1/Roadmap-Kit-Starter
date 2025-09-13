@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-09-13T20:21:42.646Z",
+  "generated_at": "2025-09-13T21:34:01.394Z",
   "env": "dev",
   "weeks": [
     {
@@ -18,8 +18,20 @@
             },
             {
               "type": "http_ok",
-              "ok": false,
-              "detail": "HTTP 404"
+              "ok": true,
+              "detail": ""
+            }
+          ]
+        },
+        {
+          "id": "safety-basics",
+          "name": "Secrets & safety guardrails in place",
+          "done": true,
+          "checks": [
+            {
+              "type": "files_exist",
+              "ok": true,
+              "detail": ".chatignore, .gitignore"
             }
           ]
         }
