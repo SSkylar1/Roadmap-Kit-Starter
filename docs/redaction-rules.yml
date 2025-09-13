@@ -1,0 +1,33 @@
+# Redaction rules for the Context Pack generator.
+# "deny" always wins. Keep this tight.
+
+deny:
+  - "**/.env*"
+  - "**/.env/**"
+  - "**/node_modules/**"
+  - "**/.next/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/*.key"
+  - "**/*.pem"
+  - "**/*.p12"
+  - "**/.DS_Store"
+  - "supabase/.branches/**"
+  - ".git/**"
+  - ".github/**"  # context doesn’t need workflow code itself
+
+# Allowed paths to index (text files only; large files truncated in previews)
+allow:
+  - "docs/**"
+  - "src/**"
+  - "app/**"
+  - "packages/**"
+  - "**/*.md"
+  - "**/*.mdx"
+  - "**/*.json"
+  - "**/*.yml"
+  - "**/*.yaml"
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
