@@ -1,33 +1,28 @@
 # Context Summary
 
-Generated: 2025-09-13T21:05:23.847Z
+Generated: 2025-09-13T21:52:21.251Z
 
 Top files included:
 
+- deno.json (227 bytes)
+- package.json (946 bytes)
+- docs/assistant-hints.md (789 bytes)
+- docs/audit.md (677 bytes)
 - docs/backlog-discovered.yml (50 bytes)
+- docs/db-facts.json (103 bytes)
+- docs/db-facts.md (100 bytes)
+- docs/github-app.md (980 bytes)
 - docs/infra-facts.md (201 bytes)
-- docs/roadmap-status.md (312 bytes)
-- docs/roadmap.yml (6009 bytes)
-- docs/tech-stack.yml (255 bytes)
-- node_modules/ajv/README.md (13781 bytes)
-- node_modules/ajv-formats/README.md (6164 bytes)
-- node_modules/argparse/CHANGELOG.md (5966 bytes)
-- node_modules/argparse/README.md (2768 bytes)
-- node_modules/braces/README.md (21505 bytes)
-- node_modules/chalk/readme.md (11696 bytes)
-- node_modules/fast-deep-equal/README.md (3323 bytes)
-- node_modules/fast-glob/README.md (26211 bytes)
-- node_modules/fast-uri/README.md (11278 bytes)
-- node_modules/fastq/README.md (8343 bytes)
-- node_modules/fastq/SECURITY.md (455 bytes)
-- node_modules/fill-range/README.md (7486 bytes)
-- node_modules/fs-extra/README.md (10773 bytes)
-- node_modules/glob-parent/CHANGELOG.md (4510 bytes)
-- node_modules/glob-parent/README.md (4646 bytes)
-- node_modules/graceful-fs/README.md (4741 bytes)
-- node_modules/is-extglob/README.md (3469 bytes)
-- node_modules/is-glob/README.md (7145 bytes)
-- node_modules/is-number/README.md (6514 bytes)
-- node_modules/js-yaml/CHANGELOG.md (19230 bytes)
+- docs/redaction-rules.yml (653 bytes)
+- docs/roadmap-status.md (2181 bytes)
+- docs/roadmap.yml (6077 bytes)
+- docs/tech-stack.yml (311 bytes)
+- docs/template-usage.md (672 bytes)
+- schema/roadmap.schema.json (2333 bytes)
+- schema/roadmaprc.schema.json (1042 bytes)
+- schema/tech-stack.schema.json (790 bytes)
+- docs/context/preprompt.md (506 bytes)
+- supabase/functions/read_only_checks/deno.json (260 bytes)
+- supabase/functions/read_only_checks/index.ts (3050 bytes)
 
-_Total files in pack: 43_
+_Total files in pack: 20_
