@@ -1,6 +1,6 @@
 # Roadmap Status
 
-Generated: 2025-09-13T20:21:42.646Z (env: dev)
+Generated: 2025-09-13T18:28:11.117Z (env: dev)
 
 ## Weeks 1–2 — Foundations
 - ❌ **CI & status scaffolding** (`infra-ci`)
