@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-09-13T18:28:11.117Z",
+  "generated_at": "2025-09-13T20:20:46.932Z",
   "env": "dev",
   "weeks": [
     {
@@ -44,24 +44,24 @@
         {
           "id": "users-rls",
           "name": "RLS enabled on users",
-          "done": false,
+          "done": true,
           "checks": [
             {
               "type": "sql_exists",
-              "ok": false,
-              "detail": "{\"ok\":false,\"error\":\"relation \\\"public.users\\\" does not exist\"}"
+              "ok": true,
+              "detail": ""
             }
           ]
         },
         {
           "id": "users-table",
           "name": "users table exists",
-          "done": false,
+          "done": true,
           "checks": [
             {
               "type": "sql_exists",
-              "ok": false,
-              "detail": "{\"ok\":false}"
+              "ok": true,
+              "detail": ""
             }
           ]
         }
