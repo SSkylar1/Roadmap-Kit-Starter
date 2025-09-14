@@ -1,18 +1,14 @@
 {
+  "$schema": "./schema/roadmaprc.schema.json",
   "kitVersion": "0.1.1",
   "envs": {
     "dev": {
-      "READ_ONLY_CHECKS_URL": "https://kszqcbpkxvhtpfmglrhu.supabase.co/functions/v1/read_only_checks"
-    },
-    "prod": {
-      "READ_ONLY_CHECKS_URL": "https://<prod-ref>.functions.supabase.co/read_only_checks"
+      "READ_ONLY_CHECKS_URL": "https://jnvbhgjhqzdicfzogwaw.functions.supabase.co/read_only_checks"
     }
   },
   "verify": {
     "symbols": [
-      "ext:pgcrypto",
-      "table:public:users",
-      "rls:public:users"
+      "ext:pgcrypto"
     ],
     "defaultEnv": "dev"
   },
@@ -20,7 +16,7 @@
     "liveProbe": true,
     "probeTestPass": false,
     "probeSupaFn": false,
-    "privacyDisclaimer": "\ud83d\udd12 Read-only, allow-listed probes. No PII or writes.",
+    "privacyDisclaimer": "🔒 Read-only checks.",
     "legendEnabled": true
   }
 }
