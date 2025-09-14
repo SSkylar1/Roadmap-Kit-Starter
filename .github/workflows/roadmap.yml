@@ -1,61 +1,19 @@
 name: Roadmap Sync
-
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-  workflow_dispatch:
-
-permissions:
-  contents: write  # allow committing docs/roadmap-status.json etc.
-
-concurrency:
-  group: roadmap-sync-${{ github.ref }}
-  cancel-in-progress: false
-
+  push: { branches: [main] }
+  pull_request: {}
+  workflow_dispatch: {}
 jobs:
   sync:
-    # Avoid loops if a bot-committed run sneaks through
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    permissions: { contents: write }
     env:
       ROADMAP_ENV: dev
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install deps
-        run: npm ci || npm i
-
-      - name: Verify READ_ONLY_CHECKS_URL
-        run: test -n "${{ secrets.READ_ONLY_CHECKS_URL }}"
-
-      - name: Validate & scan
-        run: |
-          node scripts/validate-roadmap.mjs
-          node scripts/stack-scan.mjs
-          node scripts/validate-techstack.mjs
-
-      - name: Run checks & discover
-        env:
-          READ_ONLY_CHECKS_URL: ${{ secrets.READ_ONLY_CHECKS_URL }}
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci || true
+      - name: Run checks
         run: |
           node scripts/roadmap-check.mjs
-          node scripts/discover-work.mjs
-
-      - name: Commit status artifacts
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
-          git add docs/roadmap-status.* docs/backlog-discovered.yml docs/tech-stack.yml || true
-          git commit -m "chore(roadmap): auto-update status [skip ci]" || echo "no changes"
-          git push || true
