@@ -3,7 +3,7 @@
   "kitVersion": "0.1.1",
   "envs": {
     "dev": {
-      "READ_ONLY_CHECKS_URL": "https://jnvbhgjhqzdicfzogwaw.functions.supabase.co/read_only_checks"
+      "READ_ONLY_CHECKS_URL": "https://kszqcbpkxvhtpfmglrhu.supabase.co/functions/v1/read_only_checks"
     }
   },
   "verify": {
