@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-14T05:47:27.385Z",
+  "generated_at": "2025-09-14T06:05:27.586Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -113,9 +113,9 @@
     },
     {
       "path": "docs/roadmap.yml",
-      "bytes": 6077,
-      "sha256": "b9025c538af0c75d5e8718693b16126e44349eb9b471bd0f059c938d2b684b7d",
-      "preview": "version: 1\n\nweeks:\n  # ---- Foundations: repo, CI, dashboard, safety ----\n  - id: w01\n    title: \"Weeks 1–2 — Foundations\"\n    items:\n      - id: infra-ci\n        name: \"CI & status scaffolding\"\n        checks:\n          - type: files_exist\n            globs: [\".github/workflows/roadmap.yml\", \"docs/infra-facts.md\"]\n          # Use a stable 200 until your own health endpoint exists\n          - type: http_ok\n            url: \"https://api.github.com/rate_limit\"\n            must_match: [\"resources\"]\n\n      - id: safety-basics\n        name: \"Secrets & safety guardrails in place\"\n        checks:\n          - type: files_exist\n            globs: [\".chatignore\", \".gitignore\", \"docs/security.md\"]\n\n  - id: w02\n    title: \"Weeks 3–4 — Read-only probes & GitHub App\"\n    items:\n      - id: supa-probe\n        name: \"Supabase read_only_checks deployed\"\n        checks:\n          - type: sql_exists\n            query: \"ext:pgcrypto\"  # confirms db is reachable + extension present\n      - id: gh-app-installed\n        name: \"GitHub App connected (PAT fallback allowed)\"\n        checks:\n          - type: files_exist\n            globs: [\"docs/github-app.md\"]\n\n  # ---- IDE context & indexing ----\n  - id: w03\n    title: \"Weeks 5–6 — VS Code: assistant-safe context\"\n    items:\n      - id: ide-config\n        name: \"VS Code assistant configured (Continue/Cursor)\"\n        checks:\n          - type: files_exist\n            globs: [\".vscode/settings.json\", \".vscode/extensions.json\"]\n      - id: chatignore-co\n/* …truncated (4513 bytes) … */\n"
+      "bytes": 235,
+      "sha256": "a93a933275f35876dcc177cec6d63550b43cd404adfff48b0000bfa47c06c61b",
+      "preview": "version: 1\nweeks:\n  - id: w01\n    title: Weeks 1–2 — Foundations\n    items:\n      - id: repo-ci\n        name: Repo + CI scaffolding\n        checks:\n          - type: files_exist\n            globs: [\".github/workflows/roadmap.yml\"]\n"
     },
     {
       "path": "docs/tech-stack.yml",

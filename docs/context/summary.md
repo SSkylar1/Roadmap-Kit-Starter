@@ -1,6 +1,6 @@
 # Context Summary
 
-Generated: 2025-09-14T05:47:27.385Z
+Generated: 2025-09-14T06:05:27.586Z
 
 Top files included:
 
@@ -15,7 +15,7 @@ Top files included:
 - docs/infra-facts.md (201 bytes)
 - docs/redaction-rules.yml (653 bytes)
 - docs/roadmap-status.md (2181 bytes)
-- docs/roadmap.yml (6077 bytes)
+- docs/roadmap.yml (235 bytes)
 - docs/tech-stack.yml (311 bytes)
 - docs/template-usage.md (672 bytes)
 - schema/roadmap.schema.json (2333 bytes)
