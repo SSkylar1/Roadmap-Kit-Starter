@@ -1,10 +1,12 @@
+# docs/roadmap.yml
 version: 1
 weeks:
   - id: w01
-    title: Weeks 1–2 — Foundations
+    title: "Weeks 1–2 — Foundations"
     items:
       - id: repo-ci
-        name: Repo + CI scaffolding
+        name: "Repo + CI scaffolding"
         checks:
           - type: files_exist
-            globs: [".github/workflows/roadmap.yml"]
+            files:
+              - ".github/workflows/roadmap.yml"
