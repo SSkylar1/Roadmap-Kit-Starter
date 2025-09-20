@@ -69,8 +69,12 @@ const main = async () => {
       const results = [];
       for (const c of checks) {
         if (c.type === "files_exist") {
-          const files = await fg(c.globs, { dot:true, ignore:["**/node_modules/**",".git/**"] });
-          results.push({ type:c.type, ok: files.length > 0, detail: files.slice(0,5).join(", ") });
+          const patterns = c.globs || c.files || [];
+          const files = patterns.length
+            ? await fg(patterns, { dot:true, ignore:["**/node_modules/**",".git/**"] })
+            : [];
+          const detail = files.length ? files.slice(0,5).join(", ") : (patterns.length ? "no matches" : "no patterns");
+          results.push({ type:c.type, ok: files.length > 0, detail });
         }
         if (c.type === "code_search") {
           const files = await fg(["**/*.*","!**/node_modules/**","!**/.git/**"], { dot:false });
@@ -96,7 +100,11 @@ const main = async () => {
     status.weeks.push(wkOut);
   }
 
-  fs.writeFileSync("docs/roadmap-status.json", JSON.stringify(status, null, 2), "utf8");
+  fs.writeFileSync(
+    "docs/roadmap-status.json",
+    `${JSON.stringify(status, null, 2)}\n`,
+    "utf8"
+  );
 
   const lines = ["# Roadmap Status", "", `Generated: ${status.generated_at} (env: ${ENV})`, ""];
   for (const w of status.weeks) {
@@ -104,7 +112,7 @@ const main = async () => {
     for (const it of w.items) lines.push(`- ${it.done ? "✅" : "❌"} **${it.name}** (\`${it.id}\`)`);
     lines.push("");
   }
-  fs.writeFileSync("docs/roadmap-status.md", lines.join("\n"), "utf8");
+  fs.writeFileSync("docs/roadmap-status.md", `${lines.join("\n")}\n`, "utf8");
   console.log("Updated docs/roadmap-status.json & .md");
 };
 
