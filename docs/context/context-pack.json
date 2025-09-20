@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-20T20:16:20.467Z",
+  "generated_at": "2025-09-20T20:28:07.904Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -107,15 +107,15 @@
     },
     {
       "path": "docs/roadmap-status.md",
-      "bytes": 91,
-      "sha256": "0641ace28d22070eddd3a548df83921ecb4de3361a8fd696347f8c232f3b02e2",
-      "preview": "# Roadmap Status\n## Weeks 1–2 — Foundations\n- ✅ **Repo + CI scaffolding** (`repo-ci`)"
+      "bytes": 2179,
+      "sha256": "e7295ad42f7aba87799daf45ef4d06533a5e1a609de572ec381f6a058e11c3db",
+      "preview": "# Roadmap Status\nGenerated: 2025-09-20T18:07:03.684Z (env: dev)\n## Weeks 1–2 — Foundations\n- ✅ **CI & status scaffolding** (`infra-ci`)\n- ✅ **Secrets & safety guardrails in place** (`safety-basics`)\n\n## Weeks 3–4 — Read-only probes & GitHub App\n- ✅ **Supabase read_only_checks deployed** (`supa-probe`)\n- ✅ **GitHub App connected (PAT fallback allowed)** (`gh-app-installed`)\n\n## Weeks 5–6 — VS Code: assistant-safe context\n- ✅ **VS Code assistant configured (Continue/Cursor)** (`ide-config`)\n- ✅ **.chatignore covers secrets and noise** (`chatignore-coverage`)\n\n## Weeks 7–8 — Context Packs (auto)\n- ✅ **Context pack generated (code + docs index)** (`ctx-pack`)\n- ✅ **Context pack auto-refresh via CI** (`ctx-cron`)\n\n## Weeks 9–10 — PR automations\n- ✅ **PR merge comments summarize ✅/❌ flips** (`pr-flips`)\n- ❌ **Repo README shows live status badge** (`status-badge`)\n\n## Weeks 11–12 — DB facts surfaced (read-only)\n- ✅ **Auto-generated DB facts (tables, policies only)** (`db-facts`)\n- ✅ **DB facts refresh in CI** (`db-facts-ci`)\n\n## Weeks 13–14 — Tech stack truth & discovery\n- ✅ **tech-stack.yml curated and validated** (`tech-stack`)\n- ✅ **Off-roadmap discovery populates backlog** (`discover-work`)\n\n## Weeks 15–16 — Privacy & redaction\n- ✅ **Redaction rules defined (files/regex)** (`redaction-rules`)\n- ✅ **Redaction applied to context pack** (`redaction-enforced`)\n\n## Weeks 17–18 — Dashboard onboarding (multi-repo)\n- ✅ **Dashboard deployed (Vercel or similar)** (`dash-deployed`)\n- ✅ **D\n/* …truncated (579 bytes) … */\n"
     },
     {
       "path": "docs/roadmap.yml",
-      "bytes": 272,
-      "sha256": "308ef06deb7380c1d3263ba0ba8477ae0fd220532842911c13758dec6cec6b07",
-      "preview": "# docs/roadmap.yml\nversion: 1\nweeks:\n  - id: w01\n    title: \"Weeks 1–2 — Foundations\"\n    items:\n      - id: repo-ci\n        name: \"Repo + CI scaffolding\"\n        checks:\n          - type: files_exist\n            globs:\n              - \".github/workflows/roadmap.yml\"\n"
+      "bytes": 5696,
+      "sha256": "5eed1f710df6e8617a0187c4bd8ea3430fabb89a64704c5890875f2c84706634",
+      "preview": "# docs/roadmap.yml\nversion: 1\nweeks:\n  - id: w01\n    title: \"Weeks 1–2 — Foundations\"\n    items:\n      - id: infra-ci\n        name: \"CI & status scaffolding\"\n        checks:\n          - type: files_exist\n            globs:\n              - \".github/workflows/roadmap.yml\"\n              - \"scripts/roadmap-check.mjs\"\n      - id: safety-basics\n        name: \"Secrets & safety guardrails in place\"\n        checks:\n          - type: files_exist\n            globs:\n              - \".roadmaprc.json\"\n  - id: w02\n    title: \"Weeks 3–4 — Read-only probes & GitHub App\"\n    items:\n      - id: supa-probe\n        name: \"Supabase read_only_checks deployed\"\n        checks:\n          - type: files_exist\n            globs:\n              - \"supabase/functions/read_only_checks/index.ts\"\n              - \"supabase/functions/read_only_checks/deno.json\"\n      - id: gh-app-installed\n        name: \"GitHub App connected (PAT fallback allowed)\"\n        checks:\n          - type: files_exist\n            globs:\n              - \"docs/github-app.md\"\n  - id: w03\n    title: \"Weeks 5–6 — VS Code: assistant-safe context\"\n    items:\n      - id: ide-config\n        name: \"VS Code assistant configured (Continue/Cursor)\"\n        checks:\n          - type: files_exist\n            globs:\n              - \"docs/context/preprompt.md\"\n      - id: chatignore-coverage\n        name: \".chatignore covers secrets and noise\"\n        checks:\n          - type: files_exist\n            globs:\n              - \".chatignore\"\n  - id: w04\n    t\n/* …truncated (4144 bytes) … */\n"
     },
     {
       "path": "docs/roadmaprc.schema.json",
