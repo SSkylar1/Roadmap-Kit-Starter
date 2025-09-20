@@ -1,6 +1,6 @@
 # Context Summary
 
-Generated: 2025-09-20T16:46:09.509Z
+Generated: 2025-09-20T16:59:07.450Z
 
 Top files included:
 
@@ -16,6 +16,7 @@ Top files included:
 - docs/redaction-rules.yml (653 bytes)
 - docs/roadmap-status.md (2181 bytes)
 - docs/roadmap.yml (235 bytes)
+- docs/roadmaprc.schema.json (1147 bytes)
 - docs/tech-stack.yml (311 bytes)
 - docs/template-usage.md (672 bytes)
 - schema/roadmap.schema.json (2333 bytes)
@@ -25,4 +26,4 @@ Top files included:
 - supabase/functions/read_only_checks/deno.json (260 bytes)
 - supabase/functions/read_only_checks/index.ts (3050 bytes)
 
-_Total files in pack: 20_
+_Total files in pack: 21_

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-20T16:46:09.509Z",
+  "generated_at": "2025-09-20T16:59:07.450Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -116,6 +116,12 @@
       "bytes": 235,
       "sha256": "a93a933275f35876dcc177cec6d63550b43cd404adfff48b0000bfa47c06c61b",
       "preview": "version: 1\nweeks:\n  - id: w01\n    title: Weeks 1–2 — Foundations\n    items:\n      - id: repo-ci\n        name: Repo + CI scaffolding\n        checks:\n          - type: files_exist\n            globs: [\".github/workflows/roadmap.yml\"]\n"
+    },
+    {
+      "path": "docs/roadmaprc.schema.json",
+      "bytes": 1147,
+      "sha256": "65b86dd42e4f173093ee60cb1dd704ea5801ec5d7438e51633a68389541ef74a",
+      "preview": "{\n  \"$id\": \"https://example.com/roadmaprc.schema.json\",\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"roadmaprc\",\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"kitVersion\": { \"type\": \"string\" },\n    \"envs\": {\n      \"type\": \"object\",\n      \"description\": \"Environment-specific config.\",\n      \"additionalProperties\": {\n        \"type\": \"object\",\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"READ_ONLY_CHECKS_URL\": { \"type\": \"string\" }\n        }\n      }\n    },\n    \"verify\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"symbols\": { \"type\": \"array\", \"items\": { \"type\": \"string\" } },\n        \"defaultEnv\": { \"type\": \"string\" }\n      }\n    },\n    \"comment\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"liveProbe\": { \"type\": \"boolean\" },\n        \"probeTestPass\": { \"type\": \"boolean\" },\n        \"probeSupaFn\": { \"type\": \"boolean\" },\n        \"privacyDisclaimer\": { \"type\": \"string\" },\n        \"legendEnabled\": { \"type\": \"boolean\" }\n      }\n    }\n  },\n  \"required\": [\"envs\"]\n}\n"
     },
     {
       "path": "docs/tech-stack.yml",
