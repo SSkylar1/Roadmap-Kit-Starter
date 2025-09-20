@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-20T16:59:07.450Z",
+  "generated_at": "2025-09-20T17:21:43.251Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -113,9 +113,9 @@
     },
     {
       "path": "docs/roadmap.yml",
-      "bytes": 235,
-      "sha256": "a93a933275f35876dcc177cec6d63550b43cd404adfff48b0000bfa47c06c61b",
-      "preview": "version: 1\nweeks:\n  - id: w01\n    title: Weeks 1–2 — Foundations\n    items:\n      - id: repo-ci\n        name: Repo + CI scaffolding\n        checks:\n          - type: files_exist\n            globs: [\".github/workflows/roadmap.yml\"]\n"
+      "bytes": 272,
+      "sha256": "91923d067b5e029b57c87a78d92e4382cee9a4bcc1650b974c04875dcb9293e0",
+      "preview": "# docs/roadmap.yml\nversion: 1\nweeks:\n  - id: w01\n    title: \"Weeks 1–2 — Foundations\"\n    items:\n      - id: repo-ci\n        name: \"Repo + CI scaffolding\"\n        checks:\n          - type: files_exist\n            files:\n              - \".github/workflows/roadmap.yml\"\n"
     },
     {
       "path": "docs/roadmaprc.schema.json",
