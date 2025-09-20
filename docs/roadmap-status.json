@@ -1,1 +1,24 @@
-{ "ok": true, "env": "dev", "generatedAt": "placeholder" }
+{
+  "generated_at": "2025-09-20T18:21:56.931Z",
+  "env": "dev",
+  "weeks": [
+    {
+      "title": "Weeks 1–2 — Foundations",
+      "id": "w01",
+      "items": [
+        {
+          "id": "repo-ci",
+          "name": "Repo + CI scaffolding",
+          "done": true,
+          "checks": [
+            {
+              "type": "files_exist",
+              "ok": true,
+              "detail": ".github/workflows/roadmap.yml"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
