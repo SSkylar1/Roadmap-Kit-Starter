@@ -4,9 +4,184 @@ weeks:
   - id: w01
     title: "Weeks 1–2 — Foundations"
     items:
-      - id: repo-ci
-        name: "Repo + CI scaffolding"
+      - id: infra-ci
+        name: "CI & status scaffolding"
         checks:
           - type: files_exist
             globs:
               - ".github/workflows/roadmap.yml"
+              - "scripts/roadmap-check.mjs"
+      - id: safety-basics
+        name: "Secrets & safety guardrails in place"
+        checks:
+          - type: files_exist
+            globs:
+              - ".roadmaprc.json"
+  - id: w02
+    title: "Weeks 3–4 — Read-only probes & GitHub App"
+    items:
+      - id: supa-probe
+        name: "Supabase read_only_checks deployed"
+        checks:
+          - type: files_exist
+            globs:
+              - "supabase/functions/read_only_checks/index.ts"
+              - "supabase/functions/read_only_checks/deno.json"
+      - id: gh-app-installed
+        name: "GitHub App connected (PAT fallback allowed)"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/github-app.md"
+  - id: w03
+    title: "Weeks 5–6 — VS Code: assistant-safe context"
+    items:
+      - id: ide-config
+        name: "VS Code assistant configured (Continue/Cursor)"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/context/preprompt.md"
+      - id: chatignore-coverage
+        name: ".chatignore covers secrets and noise"
+        checks:
+          - type: files_exist
+            globs:
+              - ".chatignore"
+  - id: w04
+    title: "Weeks 7–8 — Context Packs (auto)"
+    items:
+      - id: ctx-pack
+        name: "Context pack generated (code + docs index)"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/context/context-pack.json"
+      - id: ctx-cron
+        name: "Context pack auto-refresh via CI"
+        checks:
+          - type: files_exist
+            globs:
+              - ".github/workflows/context-pack.yml"
+  - id: w05
+    title: "Weeks 9–10 — PR automations"
+    items:
+      - id: pr-flips
+        name: "PR merge comments summarize ✅/❌ flips"
+        checks:
+          - type: files_exist
+            globs:
+              - ".github/workflows/roadmap-pr-comment.yml"
+      - id: status-badge
+        name: "Repo README shows live status badge"
+        checks:
+          - type: files_exist
+            globs:
+              - "README.md"
+  - id: w06
+    title: "Weeks 11–12 — DB facts surfaced (read-only)"
+    items:
+      - id: db-facts
+        name: "Auto-generated DB facts (tables, policies only)"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/db-facts.json"
+      - id: db-facts-ci
+        name: "DB facts refresh in CI"
+        checks:
+          - type: files_exist
+            globs:
+              - ".github/workflows/db-facts.yml"
+  - id: w07
+    title: "Weeks 13–14 — Tech stack truth & discovery"
+    items:
+      - id: tech-stack
+        name: "tech-stack.yml curated and validated"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/tech-stack.yml"
+      - id: discover-work
+        name: "Off-roadmap discovery populates backlog"
+        checks:
+          - type: files_exist
+            globs:
+              - "scripts/discover-work.mjs"
+              - ".github/workflows/nightly-verify.yml"
+  - id: w08
+    title: "Weeks 15–16 — Privacy & redaction"
+    items:
+      - id: redaction-rules
+        name: "Redaction rules defined (files/regex)"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/redaction-rules.yml"
+      - id: redaction-enforced
+        name: "Redaction applied to context pack"
+        checks:
+          - type: files_exist
+            globs:
+              - "scripts/generate-context-pack.mjs"
+              - "docs/context/summary.md"
+  - id: w09
+    title: "Weeks 17–18 — Dashboard onboarding (multi-repo)"
+    items:
+      - id: dash-deployed
+        name: "Dashboard deployed (Vercel or similar)"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/infra-facts.md"
+      - id: dash-settings
+        name: "Dashboard settings PR flow working"
+        checks:
+          - type: code_search
+            patterns:
+              - "READ_ONLY_CHECKS_URL"
+  - id: w10
+    title: "Weeks 19–20 — First-message context injection"
+    items:
+      - id: assistant-hints
+        name: "Assistant hints guide the model to use status"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/assistant-hints.md"
+      - id: ctx-first-message
+        name: "Preprompt includes context-pack & db-facts links"
+        checks:
+          - type: code_search
+            patterns:
+              - "Use these references as ground truth"
+  - id: w11
+    title: "Weeks 21–22 — Security & reliability"
+    items:
+      - id: gh-app-only
+        name: "GitHub App only in prod (PAT disabled)"
+        checks:
+          - type: code_search
+            patterns:
+              - "PATs are disabled in production deploys"
+      - id: audit-logs
+        name: "Minimal audit notes for context access"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/audit.md"
+  - id: w12
+    title: "Weeks 23–24 — Packaging & docs"
+    items:
+      - id: repo-template
+        name: "New-repo bootstrap template published"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/template-usage.md"
+      - id: one-pager
+        name: "One-pager: how to adopt in <30 min"
+        checks:
+          - type: files_exist
+            globs:
+              - "docs/one-pager.md"
