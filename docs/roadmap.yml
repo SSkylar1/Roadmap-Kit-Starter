@@ -8,5 +8,5 @@ weeks:
         name: "Repo + CI scaffolding"
         checks:
           - type: files_exist
-            files:
+            globs:
               - ".github/workflows/roadmap.yml"
