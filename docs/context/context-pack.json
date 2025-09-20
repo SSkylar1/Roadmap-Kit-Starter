@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-20T19:47:49.079Z",
+  "generated_at": "2025-09-20T20:16:20.467Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -107,9 +107,9 @@
     },
     {
       "path": "docs/roadmap-status.md",
-      "bytes": 141,
-      "sha256": "ddf56a2c20bf637e37090f101697934cd2a17d03bc9df0dffb1a7e16be1e6edd",
-      "preview": "# Roadmap Status\n\nGenerated: 2025-09-20T18:16:09.416Z (env: dev)\n\n## Weeks 1–2 — Foundations\n- ✅ **Repo + CI scaffolding** (`repo-ci`)\n"
+      "bytes": 91,
+      "sha256": "0641ace28d22070eddd3a548df83921ecb4de3361a8fd696347f8c232f3b02e2",
+      "preview": "# Roadmap Status\n## Weeks 1–2 — Foundations\n- ✅ **Repo + CI scaffolding** (`repo-ci`)"
     },
     {
       "path": "docs/roadmap.yml",
