@@ -16,7 +16,7 @@
     "liveProbe": true,
     "probeTestPass": false,
     "probeSupaFn": false,
-    "privacyDisclaimer": "🔒 Read-only checks.",
+    "privacyDisclaimer": "\ud83d\udd12 Read-only, allow-listed probes. No PII or writes.",
     "legendEnabled": true
   }
 }
