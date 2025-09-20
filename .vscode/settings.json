@@ -9,13 +9,11 @@
   },
   "json.schemas": [
     {
-      "fileMatch": ["roadmaprc.json", ".roadmaprc", ".roadmaprc.json"],
-      "url": "./schema/roadmaprc.schema.json"
+      "fileMatch": ["/.roadmaprc.json"],
+      "url": "./docs/roadmaprc.schema.json"
     }
   ],
   "deno.enable": true,
   "deno.enablePaths": ["supabase/functions"],
   "deno.lint": true
 }
-
-

@@ -1,0 +1,41 @@
+{
+  "$id": "https://example.com/roadmaprc.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "roadmaprc",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kitVersion": { "type": "string" },
+    "envs": {
+      "type": "object",
+      "description": "Environment-specific config.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "READ_ONLY_CHECKS_URL": { "type": "string" }
+        }
+      }
+    },
+    "verify": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "symbols": { "type": "array", "items": { "type": "string" } },
+        "defaultEnv": { "type": "string" }
+      }
+    },
+    "comment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "liveProbe": { "type": "boolean" },
+        "probeTestPass": { "type": "boolean" },
+        "probeSupaFn": { "type": "boolean" },
+        "privacyDisclaimer": { "type": "string" },
+        "legendEnabled": { "type": "boolean" }
+      }
+    }
+  },
+  "required": ["envs"]
+}
