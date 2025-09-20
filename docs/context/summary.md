@@ -1,6 +1,6 @@
 # Context Summary
 
-Generated: 2025-09-20T17:21:43.251Z
+Generated: 2025-09-20T20:16:20.467Z
 
 Top files included:
 
@@ -14,7 +14,7 @@ Top files included:
 - docs/github-app.md (980 bytes)
 - docs/infra-facts.md (201 bytes)
 - docs/redaction-rules.yml (653 bytes)
-- docs/roadmap-status.md (2181 bytes)
+- docs/roadmap-status.md (91 bytes)
 - docs/roadmap.yml (272 bytes)
 - docs/roadmaprc.schema.json (1147 bytes)
 - docs/tech-stack.yml (311 bytes)

@@ -1,7 +1,5 @@
 # Roadmap Status
-
 Generated: 2025-09-20T18:07:03.684Z (env: dev)
-
 ## Weeks 1–2 — Foundations
 - ✅ **CI & status scaffolding** (`infra-ci`)
 - ✅ **Secrets & safety guardrails in place** (`safety-basics`)
