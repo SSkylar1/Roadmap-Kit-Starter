@@ -9,16 +9,20 @@ const headers = {
   "content-type": "application/json",
   "access-control-allow-origin": "*",
   "access-control-allow-headers": "content-type, authorization",
-  "access-control-allow-methods": "POST, OPTIONS",
+  "access-control-allow-methods": "GET, POST, OPTIONS",
 };
 
 // helper to parse query strings like "ext:pgcrypto"
 function parseSymbol(q: string) {
-  const p = q.split(":");
-  if (p[0] === "ext"    && p.length === 2) return { kind: "ext", ext: p[1] };
-  if (p[0] === "table"  && p.length === 3) return { kind: "table", sch: p[1], tbl: p[2] };
-  if (p[0] === "rls"    && p.length === 3) return { kind: "rls", sch: p[1], tbl: p[2] };
-  if (p[0] === "policy" && p.length === 4) return { kind: "policy", sch: p[1], tbl: p[2], pol: p[3] };
+  const trimmed = q.trim();
+  if (!trimmed) return null;
+  const parts = trimmed.split(":");
+  const kind = parts.shift()?.toLowerCase();
+  if (!kind) return null;
+  if (kind === "ext"    && parts.length === 1) return { kind: "ext", ext: parts[0] };
+  if (kind === "table"  && parts.length === 2) return { kind: "table", sch: parts[0], tbl: parts[1] };
+  if (kind === "rls"    && parts.length === 2) return { kind: "rls", sch: parts[0], tbl: parts[1] };
+  if (kind === "policy" && parts.length === 3) return { kind: "policy", sch: parts[0], tbl: parts[1], pol: parts[2] };
   return null;
 }
 
@@ -28,19 +32,30 @@ serve(async (req) => {
   }
 
   try {
-    if (req.method !== "POST") {
+    let query: string | null = null;
+
+    if (req.method === "GET") {
+      const params = new URL(req.url).searchParams;
+      query = params.get("query")
+        ?? params.get("read_only_checks")
+        ?? params.get("symbol");
+    } else if (req.method === "POST") {
+      const body = await req.json().catch(() => ({}));
+      const possible = body?.query ?? body?.read_only_checks ?? body?.symbol;
+      if (typeof possible === "string") {
+        query = possible;
+      }
+    } else {
       return new Response(
         JSON.stringify({ ok: false, error: "Method Not Allowed" }),
         { status: 405, headers }
       );
     }
 
-    const body = await req.json().catch(() => ({}));
-    const query = body?.query;
     if (typeof query !== "string") {
       return new Response(
         JSON.stringify({ ok: false, error: "query required" }),
-        { headers }
+        { status: 400, headers }
       );
     }
 
@@ -48,7 +63,7 @@ serve(async (req) => {
     if (!sym) {
       return new Response(
         JSON.stringify({ ok: false, error: "invalid symbol" }),
-        { headers }
+        { status: 400, headers }
       );
     }
 
