@@ -1,6 +1,6 @@
 # Context Summary
 
-Generated: 2025-09-20T20:28:07.904Z
+Generated: 2025-09-21T00:35:47.949Z
 
 Top files included:
 
@@ -24,6 +24,6 @@ Top files included:
 - schema/tech-stack.schema.json (790 bytes)
 - docs/context/preprompt.md (506 bytes)
 - supabase/functions/read_only_checks/deno.json (260 bytes)
-- supabase/functions/read_only_checks/index.ts (3050 bytes)
+- supabase/functions/read_only_checks/index.ts (3643 bytes)
 
 _Total files in pack: 21_

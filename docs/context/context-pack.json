@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-20T20:28:07.904Z",
+  "generated_at": "2025-09-21T00:35:47.949Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -167,9 +167,9 @@
     },
     {
       "path": "supabase/functions/read_only_checks/index.ts",
-      "bytes": 3050,
-      "sha256": "7a6946cbc1b3b7ac524a981876e79d5b7f56e1a8ebe81826fbac98201264ae05",
-      "preview": "// supabase/functions/read_only_checks/index.ts\n\n// Deno runtime\nimport { serve } from \"https://deno.land/std@0.224.0/http/server.ts\";\nimport { createClient } from \"npm:@supabase/supabase-js@2\";\n\n// CORS + JSON headers\nconst headers = {\n  \"content-type\": \"application/json\",\n  \"access-control-allow-origin\": \"*\",\n  \"access-control-allow-headers\": \"content-type, authorization\",\n  \"access-control-allow-methods\": \"POST, OPTIONS\",\n};\n\n// helper to parse query strings like \"ext:pgcrypto\"\nfunction parseSymbol(q: string) {\n  const p = q.split(\":\");\n  if (p[0] === \"ext\"    && p.length === 2) return { kind: \"ext\", ext: p[1] };\n  if (p[0] === \"table\"  && p.length === 3) return { kind: \"table\", sch: p[1], tbl: p[2] };\n  if (p[0] === \"rls\"    && p.length === 3) return { kind: \"rls\", sch: p[1], tbl: p[2] };\n  if (p[0] === \"policy\" && p.length === 4) return { kind: \"policy\", sch: p[1], tbl: p[2], pol: p[3] };\n  return null;\n}\n\nserve(async (req) => {\n  if (req.method === \"OPTIONS\") {\n    return new Response(null, { headers });\n  }\n\n  try {\n    if (req.method !== \"POST\") {\n      return new Response(\n        JSON.stringify({ ok: false, error: \"Method Not Allowed\" }),\n        { status: 405, headers }\n      );\n    }\n\n    const body = await req.json().catch(() => ({}));\n    const query = body?.query;\n    if (typeof query !== \"string\") {\n      return new Response(\n        JSON.stringify({ ok: false, error: \"query required\" }),\n        { headers }\n      );\n    }\n\n    const sym = parseSymbol(query);\n\n/* …truncated (1548 bytes) … */\n"
+      "bytes": 3643,
+      "sha256": "0e3c5779ce3fc8e6ec4403b0e3f809340ef49781c9b711e66d14629372bc39df",
+      "preview": "// supabase/functions/read_only_checks/index.ts\n\n// Deno runtime\nimport { serve } from \"https://deno.land/std@0.224.0/http/server.ts\";\nimport { createClient } from \"npm:@supabase/supabase-js@2\";\n\n// CORS + JSON headers\nconst headers = {\n  \"content-type\": \"application/json\",\n  \"access-control-allow-origin\": \"*\",\n  \"access-control-allow-headers\": \"content-type, authorization\",\n  \"access-control-allow-methods\": \"GET, POST, OPTIONS\",\n};\n\n// helper to parse query strings like \"ext:pgcrypto\"\nfunction parseSymbol(q: string) {\n  const trimmed = q.trim();\n  if (!trimmed) return null;\n  const parts = trimmed.split(\":\");\n  const kind = parts.shift()?.toLowerCase();\n  if (!kind) return null;\n  if (kind === \"ext\"    && parts.length === 1) return { kind: \"ext\", ext: parts[0] };\n  if (kind === \"table\"  && parts.length === 2) return { kind: \"table\", sch: parts[0], tbl: parts[1] };\n  if (kind === \"rls\"    && parts.length === 2) return { kind: \"rls\", sch: parts[0], tbl: parts[1] };\n  if (kind === \"policy\" && parts.length === 3) return { kind: \"policy\", sch: parts[0], tbl: parts[1], pol: parts[2] };\n  return null;\n}\n\nserve(async (req) => {\n  if (req.method === \"OPTIONS\") {\n    return new Response(null, { headers });\n  }\n\n  try {\n    let query: string | null = null;\n\n    if (req.method === \"GET\") {\n      const params = new URL(req.url).searchParams;\n      query = params.get(\"query\")\n        ?? params.get(\"read_only_checks\")\n        ?? params.get(\"symbol\");\n    } else if (req.method === \"POST\") {\n/* …truncated (2141 bytes) … */\n"
     }
   ]
 }
