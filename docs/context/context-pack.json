@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2025-09-22T06:23:04.809Z",
+  "generated_at": "2025-09-24T21:58:55.807Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -46,6 +46,12 @@
   },
   "files": [
     {
+      "path": "README.md",
+      "bytes": 1222,
+      "sha256": "1c7e99d5663523b8f33ca1a98c6e389fcb1ed4d44889c4260279dd37ddef7992",
+      "preview": "# Roadmap Kit Starter\n\n[![Roadmap status](docs/roadmap-status.svg)](docs/roadmap-status.md)\n\nThis repository captures an end-to-end example of the Roadmap Kit in action. It\nincludes CI workflows, Supabase read-only probes, context packs, and automation\nscripts that keep roadmap status up to date.\n\n## What lives here?\n\n- **Automation scripts** under `scripts/` keep the roadmap, context pack, and DB\n  facts in sync.\n- **Docs** in `docs/` explain the GitHub App integration, assistant guardrails,\n  and generated status artifacts.\n- **Supabase edge function** (`supabase/functions/read_only_checks/`) provides a\n  read-only verification endpoint for automated checks.\n\n## Quick start\n\n```bash\nnpm install\nnpm run roadmap:check\n```\n\nThe `roadmap:check` script refreshes:\n\n- `docs/roadmap-status.json` and `docs/roadmap-status.md` (human-friendly view)\n- `docs/roadmap-status.svg` (the badge embedded above)\n\nAdditional helper commands live in `package.json` (for example\n`npm run context:pack` and `npm run db:facts`).\n\n## Useful references\n\n- [Roadmap overview](docs/roadmap.yml)\n- [Current status details](docs/roadmap-status.md)\n- [Context pack preview](docs/context/context-pack.json)\n- [DB facts](docs/db-facts.json)\n"
+    },
+    {
       "path": "deno.json",
       "bytes": 227,
       "sha256": "b0ea69f47c32b88ef283a6ecac1f6c3757e440a6eb82bec7e0b1ba84e8740749",
@@ -78,14 +84,14 @@
     {
       "path": "docs/db-facts.json",
       "bytes": 103,
-      "sha256": "9020db2d8701cecd63a93066aaec8c446375c88e0f9af98f00e39d22a320d1d9",
-      "preview": "{\n  \"generated_at\": \"2025-09-16T06:29:36.180Z\",\n  \"tables\": [],\n  \"rls_enabled\": [],\n  \"policies\": []\n}"
+      "sha256": "9d695a2b77989e348d9c746d5f370e7e0645254067c562a33d102fb42a825de7",
+      "preview": "{\n  \"generated_at\": \"2025-09-23T06:30:12.808Z\",\n  \"tables\": [],\n  \"rls_enabled\": [],\n  \"policies\": []\n}"
     },
     {
       "path": "docs/db-facts.md",
       "bytes": 100,
-      "sha256": "0ddb684d6cd88a88fb0de0aed3642c56d40d0ccd4cf565187c80df28455ea57f",
-      "preview": "# DB Facts\n\nGenerated: 2025-09-16T06:29:36.180Z\n\n## Tables (0)\n\n## RLS Enabled (0)\n\n## Policies (0)\n"
+      "sha256": "fc4953b2771013c339a3926bb45ef6de4d31245894d06d10ad4f22389e00fe17",
+      "preview": "# DB Facts\n\nGenerated: 2025-09-23T06:30:12.808Z\n\n## Tables (0)\n\n## RLS Enabled (0)\n\n## Policies (0)\n"
     },
     {
       "path": "docs/github-app.md",
@@ -100,6 +106,12 @@
       "preview": "# Infra Facts (project-agnostic)\n- Primary DB: Postgres (Supabase)\n- Read-only allowlist URL: see `.roadmaprc.json`\n- Environments: dev, prod\n\n## Health probes\n- App health: https://example.com/health\n"
     },
     {
+      "path": "docs/one-pager.md",
+      "bytes": 1921,
+      "sha256": "ce6612326f4a0230f9f655029de77c33c285729c6f4766fe0a6cb9f5bbf429b5",
+      "preview": "# Adopt Roadmap Kit in <30 Minutes\n\nUse this quick-start checklist to port the Roadmap Kit workflows and docs into a\nnew repository.\n\n## 1. Prep (5 minutes)\n\n- Ensure you have Node.js 18+, npm, and the Supabase CLI installed locally.\n- Copy this repository or use it as a GitHub template.\n- Create a Supabase project (free tier is fine) and deploy the\n  `read_only_checks` function.\n\n## 2. Configure secrets & settings (5 minutes)\n\n- Generate a service role key for the Supabase project and store the hosted edge\n  function URL.\n- In the new repo, set the `READ_ONLY_CHECKS_URL` secret to that URL.\n- Review `.roadmaprc.json` and update `verify.defaultEnv` plus any\n  environment-specific overrides.\n\n## 3. Install automation workflows (10 minutes)\n\n- Copy the workflows from `.github/workflows/`:\n  - `roadmap.yml` (status generator)\n  - `context-pack.yml` (context bundle)\n  - `db-facts.yml` (database facts)\n- Copy the helper scripts in `scripts/` if you started from a clean repo.\n- Commit the workflows and scripts so CI can run immediately after the first\n  push.\n\n## 4. Seed initial artifacts (5 minutes)\n\nRun the bootstrap commands locally:\n\n```bash\nnpm install\nnpm run context:pack\nnpm run db:facts\nnpm run roadmap:check\n```\n\nCommit the generated artifacts:\n\n- `docs/context/context-pack.json`\n- `docs/db-facts.json`\n- `docs/roadmap-status.json`, `docs/roadmap-status.md`, and `docs/roadmap-status.svg`\n\n## 5. Confirm dashboard integration (5 minutes)\n\n- Install the Roadmap Kit GitHub App (\n/* …truncated (415 bytes) … */\n"
+    },
+    {
       "path": "docs/redaction-rules.yml",
       "bytes": 653,
       "sha256": "b26123d8d19b774ec0ac065f97b3fe13f7dcdcf3e2667d1d15f703a1fff90570",
@@ -107,9 +119,9 @@
     },
     {
       "path": "docs/roadmap-status.md",
-      "bytes": 2179,
-      "sha256": "e7295ad42f7aba87799daf45ef4d06533a5e1a609de572ec381f6a058e11c3db",
-      "preview": "# Roadmap Status\nGenerated: 2025-09-20T18:07:03.684Z (env: dev)\n## Weeks 1–2 — Foundations\n- ✅ **CI & status scaffolding** (`infra-ci`)\n- ✅ **Secrets & safety guardrails in place** (`safety-basics`)\n\n## Weeks 3–4 — Read-only probes & GitHub App\n- ✅ **Supabase read_only_checks deployed** (`supa-probe`)\n- ✅ **GitHub App connected (PAT fallback allowed)** (`gh-app-installed`)\n\n## Weeks 5–6 — VS Code: assistant-safe context\n- ✅ **VS Code assistant configured (Continue/Cursor)** (`ide-config`)\n- ✅ **.chatignore covers secrets and noise** (`chatignore-coverage`)\n\n## Weeks 7–8 — Context Packs (auto)\n- ✅ **Context pack generated (code + docs index)** (`ctx-pack`)\n- ✅ **Context pack auto-refresh via CI** (`ctx-cron`)\n\n## Weeks 9–10 — PR automations\n- ✅ **PR merge comments summarize ✅/❌ flips** (`pr-flips`)\n- ❌ **Repo README shows live status badge** (`status-badge`)\n\n## Weeks 11–12 — DB facts surfaced (read-only)\n- ✅ **Auto-generated DB facts (tables, policies only)** (`db-facts`)\n- ✅ **DB facts refresh in CI** (`db-facts-ci`)\n\n## Weeks 13–14 — Tech stack truth & discovery\n- ✅ **tech-stack.yml curated and validated** (`tech-stack`)\n- ✅ **Off-roadmap discovery populates backlog** (`discover-work`)\n\n## Weeks 15–16 — Privacy & redaction\n- ✅ **Redaction rules defined (files/regex)** (`redaction-rules`)\n- ✅ **Redaction applied to context pack** (`redaction-enforced`)\n\n## Weeks 17–18 — Dashboard onboarding (multi-repo)\n- ✅ **Dashboard deployed (Vercel or similar)** (`dash-deployed`)\n- ✅ **D\n/* …truncated (579 bytes) … */\n"
+      "bytes": 2182,
+      "sha256": "40bbc0692308053580b20122bfe80716f03bc14e3d0a29cd236269fc91864345",
+      "preview": "# Roadmap Status\n\nGenerated: 2025-09-24T21:49:13.620Z (env: dev)\n\n## Weeks 1–2 — Foundations\n- ✅ **CI & status scaffolding** (`infra-ci`)\n- ✅ **Secrets & safety guardrails in place** (`safety-basics`)\n\n## Weeks 3–4 — Read-only probes & GitHub App\n- ✅ **Supabase read_only_checks deployed** (`supa-probe`)\n- ✅ **GitHub App connected (PAT fallback allowed)** (`gh-app-installed`)\n\n## Weeks 5–6 — VS Code: assistant-safe context\n- ✅ **VS Code assistant configured (Continue/Cursor)** (`ide-config`)\n- ✅ **.chatignore covers secrets and noise** (`chatignore-coverage`)\n\n## Weeks 7–8 — Context Packs (auto)\n- ✅ **Context pack generated (code + docs index)** (`ctx-pack`)\n- ✅ **Context pack auto-refresh via CI** (`ctx-cron`)\n\n## Weeks 9–10 — PR automations\n- ✅ **PR merge comments summarize ✅/❌ flips** (`pr-flips`)\n- ✅ **Repo README shows live status badge** (`status-badge`)\n\n## Weeks 11–12 — DB facts surfaced (read-only)\n- ✅ **Auto-generated DB facts (tables, policies only)** (`db-facts`)\n- ✅ **DB facts refresh in CI** (`db-facts-ci`)\n\n## Weeks 13–14 — Tech stack truth & discovery\n- ✅ **tech-stack.yml curated and validated** (`tech-stack`)\n- ✅ **Off-roadmap discovery populates backlog** (`discover-work`)\n\n## Weeks 15–16 — Privacy & redaction\n- ✅ **Redaction rules defined (files/regex)** (`redaction-rules`)\n- ✅ **Redaction applied to context pack** (`redaction-enforced`)\n\n## Weeks 17–18 — Dashboard onboarding (multi-repo)\n- ✅ **Dashboard deployed (Vercel or similar)** (`dash-deployed`)\n- ✅ *\n/* …truncated (582 bytes) … */\n"
     },
     {
       "path": "docs/roadmap.yml",

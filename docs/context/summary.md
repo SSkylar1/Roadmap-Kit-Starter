@@ -1,9 +1,10 @@
 # Context Summary
 
-Generated: 2025-09-22T06:23:04.809Z
+Generated: 2025-09-24T21:58:55.807Z
 
 Top files included:
 
+- README.md (1222 bytes)
 - deno.json (227 bytes)
 - package.json (946 bytes)
 - docs/assistant-hints.md (789 bytes)
@@ -13,8 +14,9 @@ Top files included:
 - docs/db-facts.md (100 bytes)
 - docs/github-app.md (980 bytes)
 - docs/infra-facts.md (201 bytes)
+- docs/one-pager.md (1921 bytes)
 - docs/redaction-rules.yml (653 bytes)
-- docs/roadmap-status.md (2179 bytes)
+- docs/roadmap-status.md (2182 bytes)
 - docs/roadmap.yml (5696 bytes)
 - docs/roadmaprc.schema.json (1147 bytes)
 - docs/tech-stack.yml (311 bytes)
@@ -26,4 +28,4 @@ Top files included:
 - supabase/functions/read_only_checks/deno.json (260 bytes)
 - supabase/functions/read_only_checks/index.ts (3643 bytes)
 
-_Total files in pack: 21_
+_Total files in pack: 23_
