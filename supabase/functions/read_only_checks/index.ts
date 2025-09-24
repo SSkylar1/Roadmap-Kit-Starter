@@ -26,6 +26,15 @@ function parseSymbol(q: string) {
   return null;
 }
 
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "object" && error !== null && "message" in error) {
+    const { message } = error as { message?: unknown };
+    if (typeof message === "string") return message;
+  }
+  return String(error);
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers });
@@ -96,11 +105,8 @@ serve(async (req) => {
     }
 
     return new Response(JSON.stringify({ ok }), { headers });
-  } catch (e) {
-    const msg = (e && typeof e === "object" && "message" in e)
-      ? (e as any).message
-      : String(e);
-    return new Response(JSON.stringify({ ok: false, error: msg }), { headers });
+  } catch (error) {
+    const message = getErrorMessage(error);
+    return new Response(JSON.stringify({ ok: false, error: message }), { headers });
   }
 });
-

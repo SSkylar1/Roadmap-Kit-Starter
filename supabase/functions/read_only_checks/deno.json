@@ -5,7 +5,7 @@
     }
   },
 
-  "nodeModulesDir": true,
+  "nodeModulesDir": "auto",
 
   "fmt": {
     "lineWidth": 100,
