@@ -1,5 +1,7 @@
 # Roadmap Status
-Generated: 2025-09-20T18:07:03.684Z (env: dev)
+
+Generated: 2025-09-24T21:49:13.620Z (env: dev)
+
 ## Weeks 1–2 — Foundations
 - ✅ **CI & status scaffolding** (`infra-ci`)
 - ✅ **Secrets & safety guardrails in place** (`safety-basics`)
@@ -18,7 +20,7 @@ Generated: 2025-09-20T18:07:03.684Z (env: dev)
 
 ## Weeks 9–10 — PR automations
 - ✅ **PR merge comments summarize ✅/❌ flips** (`pr-flips`)
-- ❌ **Repo README shows live status badge** (`status-badge`)
+- ✅ **Repo README shows live status badge** (`status-badge`)
 
 ## Weeks 11–12 — DB facts surfaced (read-only)
 - ✅ **Auto-generated DB facts (tables, policies only)** (`db-facts`)
@@ -46,4 +48,5 @@ Generated: 2025-09-20T18:07:03.684Z (env: dev)
 
 ## Weeks 23–24 — Packaging & docs
 - ✅ **New-repo bootstrap template published** (`repo-template`)
-- ❌ **One-pager: how to adopt in <30 min** (`one-pager`)
+- ✅ **One-pager: how to adopt in <30 min** (`one-pager`)
+

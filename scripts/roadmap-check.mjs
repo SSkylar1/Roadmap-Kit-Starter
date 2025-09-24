@@ -106,6 +106,53 @@ const main = async () => {
     "utf8"
   );
 
+  const totals = status.weeks.reduce(
+    (acc, wk) => {
+      acc.total += wk.items.length;
+      acc.done += wk.items.filter((it) => it.done).length;
+      return acc;
+    },
+    { done: 0, total: 0 }
+  );
+
+  const ratio = totals.total ? totals.done / totals.total : 0;
+  const color = ratio >= 1 ? "#2ea44f" : ratio >= 0.5 ? "#dfb317" : "#d73a49";
+  const label = "roadmap";
+  const message = `${totals.done}/${totals.total} done`;
+  const charWidth = 6;
+  const padding = 20;
+  const labelWidth = Math.max(padding, label.length * charWidth + padding);
+  const valueWidth = Math.max(padding, message.length * charWidth + padding);
+  const width = labelWidth + valueWidth;
+
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="20" role="img" aria-label="Roadmap status: ${message}">` +
+    `<title>Roadmap status: ${message}</title>` +
+    `<linearGradient id="smooth" x2="0" y2="100%">` +
+    `<stop offset="0" stop-color="#fff" stop-opacity=".7"/>` +
+    `<stop offset=".1" stop-color="#aaa" stop-opacity=".1"/>` +
+    `<stop offset=".9" stop-color="#000" stop-opacity=".3"/>` +
+    `<stop offset="1" stop-color="#000" stop-opacity=".5"/>` +
+    `</linearGradient>` +
+    `<mask id="round">` +
+    `<rect width="${width}" height="20" rx="3" fill="#fff"/>` +
+    `</mask>` +
+    `<g mask="url(#round)">` +
+    `<rect width="${labelWidth}" height="20" fill="#555"/>` +
+    `<rect x="${labelWidth}" width="${valueWidth}" height="20" fill="${color}"/>` +
+    `<rect width="${width}" height="20" fill="url(#smooth)"/>` +
+    `</g>` +
+    `<g fill="#fff" text-anchor="middle" ` +
+    `font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">` +
+    `<text x="${labelWidth / 2}" y="15" fill="#010101" fill-opacity=".3">${label}</text>` +
+    `<text x="${labelWidth / 2}" y="14">${label}</text>` +
+    `<text x="${labelWidth + valueWidth / 2}" y="15" fill="#010101" fill-opacity=".3">${message}</text>` +
+    `<text x="${labelWidth + valueWidth / 2}" y="14">${message}</text>` +
+    `</g>` +
+    `</svg>\n`;
+
+  fs.writeFileSync("docs/roadmap-status.svg", svg, "utf8");
+
   const lines = ["# Roadmap Status", "", `Generated: ${status.generated_at} (env: ${ENV})`, ""];
   for (const w of status.weeks) {
     lines.push(`## ${w.title}`);

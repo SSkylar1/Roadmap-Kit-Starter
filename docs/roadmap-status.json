@@ -1,9 +1,9 @@
 {
-  "generated_at": "2025-09-20T18:07:03.684Z",
+  "generated_at": "2025-09-24T21:49:13.620Z",
   "env": "dev",
   "weeks": [
     {
-      "title": "Weeks 1\u20132 \u2014 Foundations",
+      "title": "Weeks 1–2 — Foundations",
       "id": "w01",
       "items": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "title": "Weeks 3\u20134 \u2014 Read-only probes & GitHub App",
+      "title": "Weeks 3–4 — Read-only probes & GitHub App",
       "id": "w02",
       "items": [
         {
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "title": "Weeks 5\u20136 \u2014 VS Code: assistant-safe context",
+      "title": "Weeks 5–6 — VS Code: assistant-safe context",
       "id": "w03",
       "items": [
         {
@@ -93,7 +93,7 @@
       ]
     },
     {
-      "title": "Weeks 7\u20138 \u2014 Context Packs (auto)",
+      "title": "Weeks 7–8 — Context Packs (auto)",
       "id": "w04",
       "items": [
         {
@@ -123,12 +123,12 @@
       ]
     },
     {
-      "title": "Weeks 9\u201310 \u2014 PR automations",
+      "title": "Weeks 9–10 — PR automations",
       "id": "w05",
       "items": [
         {
           "id": "pr-flips",
-          "name": "PR merge comments summarize \u2705/\u274c flips",
+          "name": "PR merge comments summarize ✅/❌ flips",
           "done": true,
           "checks": [
             {
@@ -141,19 +141,19 @@
         {
           "id": "status-badge",
           "name": "Repo README shows live status badge",
-          "done": false,
+          "done": true,
           "checks": [
             {
               "type": "files_exist",
-              "ok": false,
-              "detail": ""
+              "ok": true,
+              "detail": "README.md"
             }
           ]
         }
       ]
     },
     {
-      "title": "Weeks 11\u201312 \u2014 DB facts surfaced (read-only)",
+      "title": "Weeks 11–12 — DB facts surfaced (read-only)",
       "id": "w06",
       "items": [
         {
@@ -183,7 +183,7 @@
       ]
     },
     {
-      "title": "Weeks 13\u201314 \u2014 Tech stack truth & discovery",
+      "title": "Weeks 13–14 — Tech stack truth & discovery",
       "id": "w07",
       "items": [
         {
@@ -213,7 +213,7 @@
       ]
     },
     {
-      "title": "Weeks 15\u201316 \u2014 Privacy & redaction",
+      "title": "Weeks 15–16 — Privacy & redaction",
       "id": "w08",
       "items": [
         {
@@ -243,7 +243,7 @@
       ]
     },
     {
-      "title": "Weeks 17\u201318 \u2014 Dashboard onboarding (multi-repo)",
+      "title": "Weeks 17–18 — Dashboard onboarding (multi-repo)",
       "id": "w09",
       "items": [
         {
@@ -266,14 +266,14 @@
             {
               "type": "code_search",
               "ok": true,
-              "detail": "bin/doctor.mjs, bin/verify.mjs, docs/roadmap.yml, docs/roadmaprc.schema.json, docs/template-usage.md"
+              "detail": "bin/doctor.mjs, bin/verify.mjs, docs/one-pager.md, docs/roadmap.yml, docs/roadmaprc.schema.json"
             }
           ]
         }
       ]
     },
     {
-      "title": "Weeks 19\u201320 \u2014 First-message context injection",
+      "title": "Weeks 19–20 — First-message context injection",
       "id": "w10",
       "items": [
         {
@@ -303,7 +303,7 @@
       ]
     },
     {
-      "title": "Weeks 21\u201322 \u2014 Security & reliability",
+      "title": "Weeks 21–22 — Security & reliability",
       "id": "w11",
       "items": [
         {
@@ -333,7 +333,7 @@
       ]
     },
     {
-      "title": "Weeks 23\u201324 \u2014 Packaging & docs",
+      "title": "Weeks 23–24 — Packaging & docs",
       "id": "w12",
       "items": [
         {
@@ -351,12 +351,12 @@
         {
           "id": "one-pager",
           "name": "One-pager: how to adopt in <30 min",
-          "done": false,
+          "done": true,
           "checks": [
             {
               "type": "files_exist",
-              "ok": false,
-              "detail": ""
+              "ok": true,
+              "detail": "docs/one-pager.md"
             }
           ]
         }
