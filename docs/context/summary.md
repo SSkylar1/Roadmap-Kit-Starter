@@ -1,11 +1,11 @@
 # Context Summary
 
-Generated: 2025-09-24T21:58:55.807Z
+Generated: 2025-09-24T22:05:13.862Z
 
 Top files included:
 
 - README.md (1222 bytes)
-- deno.json (227 bytes)
+- deno.json (230 bytes)
 - package.json (946 bytes)
 - docs/assistant-hints.md (789 bytes)
 - docs/audit.md (677 bytes)
@@ -25,7 +25,7 @@ Top files included:
 - schema/roadmaprc.schema.json (1042 bytes)
 - schema/tech-stack.schema.json (790 bytes)
 - docs/context/preprompt.md (506 bytes)
-- supabase/functions/read_only_checks/deno.json (260 bytes)
-- supabase/functions/read_only_checks/index.ts (3643 bytes)
+- supabase/functions/read_only_checks/deno.json (262 bytes)
+- supabase/functions/read_only_checks/index.ts (3903 bytes)
 
 _Total files in pack: 23_
