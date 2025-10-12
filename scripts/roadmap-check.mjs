@@ -70,11 +70,29 @@ const main = async () => {
       for (const c of checks) {
         if (c.type === "files_exist") {
           const patterns = c.globs || c.files || [];
-          const files = patterns.length
-            ? await fg(patterns, { dot:true, ignore:["**/node_modules/**",".git/**"] })
-            : [];
-          const detail = files.length ? files.slice(0,5).join(", ") : (patterns.length ? "no matches" : "no patterns");
-          results.push({ type:c.type, ok: files.length > 0, detail });
+          const matches = [];
+          const missing = [];
+
+          for (const pattern of patterns) {
+            const files = await fg(pattern, { dot:true, ignore:["**/node_modules/**",".git/**"] });
+            if (files.length) {
+              matches.push(...files);
+            } else {
+              missing.push(pattern);
+            }
+          }
+
+          let detail = "no patterns";
+          let ok = false;
+
+          if (patterns.length) {
+            ok = missing.length === 0;
+            detail = ok
+              ? matches.slice(0,5).join(", ")
+              : `missing: ${missing.join(", ")}`;
+          }
+
+          results.push({ type:c.type, ok, detail });
         }
         if (c.type === "code_search") {
           const files = await fg(["**/*.*","!**/node_modules/**","!**/.git/**"], { dot:false });
