@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-08T07:40:58.149Z",
+  "generated_at": "2026-06-15T07:57:21.430Z",
   "redaction_rules": {
     "allow": [
       "docs/**",
@@ -84,14 +84,14 @@
     {
       "path": "docs/db-facts.json",
       "bytes": 103,
-      "sha256": "499e54b4d466ef3bd424836d93f5271e874352c82a62b801f68822a304750a3e",
-      "preview": "{\n  \"generated_at\": \"2026-06-02T07:45:34.426Z\",\n  \"tables\": [],\n  \"rls_enabled\": [],\n  \"policies\": []\n}"
+      "sha256": "a9bf019940fc59728b91a9ec7c5e67d90c24410e6b9e10ac6fe1bb8451df12c2",
+      "preview": "{\n  \"generated_at\": \"2026-06-09T07:20:57.147Z\",\n  \"tables\": [],\n  \"rls_enabled\": [],\n  \"policies\": []\n}"
     },
     {
       "path": "docs/db-facts.md",
       "bytes": 100,
-      "sha256": "f88a1f060a1568f085d335905ae8cd72a46c9c3133ba51d49b16b6b7049d35ca",
-      "preview": "# DB Facts\n\nGenerated: 2026-06-02T07:45:34.426Z\n\n## Tables (0)\n\n## RLS Enabled (0)\n\n## Policies (0)\n"
+      "sha256": "40eacafa21a671439a93648ecd85608a50b4df4537fb9d6fe5c6977ed085976f",
+      "preview": "# DB Facts\n\nGenerated: 2026-06-09T07:20:57.147Z\n\n## Tables (0)\n\n## RLS Enabled (0)\n\n## Policies (0)\n"
     },
     {
       "path": "docs/github-app.md",
